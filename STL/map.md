@@ -195,3 +195,18 @@ for(it = m.begin(); it != m.end(); it++)
 
 
 ```
+
+### 잡기술1
+
+> map의 값을 vector에 한 번에 삽입하는 방식
+
+```c++
+map<string,int> m;
+vector<pair<string,int> > vec(m.begin(),m.end());
+	
+for(int i = 0; i < vec.size(); i++)
+	cout << vec[i].first << " " << vec[i].second << endl;
+// 출력 결과 map에 저장되어 있는 상태로 나옴
+// map은 값 저장시 자동으로 key값 기준으로 정렬이 되기 때문에 정렬된 상태로 출력
+
+```
