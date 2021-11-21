@@ -171,3 +171,27 @@ int main()
 
 
 ```
+
+
+### map iterator
+
+> iterator 접근시 map에 key와 value가 존재
+
+```c++
+
+map<string,int> m;
+map<string,int> :: iterator it;
+	
+m["a"] = 1;
+m["b"] = 2;
+m["c"] = 3;
+m["d"] = 4;
+
+for(it = m.begin(); it != m.end(); it++)
+{
+	cout << it->first << endl; // map 의 key 값 first로 표현	
+	cout << it->second << endl; // map의 value 값 second로 표현이된다.
+}
+
+
+```
