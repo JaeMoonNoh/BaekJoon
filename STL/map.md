@@ -94,3 +94,80 @@ while(!um_pq["njm"].empty())
 }
 
 ```
+
+### 전체 코드
+
+
+```c++
+
+#include<iostream>
+#include<vector>
+#include<map>
+#include<unordered_map>
+#include<queue>
+#include<algorithm>
+
+using namespace std;
+
+unordered_map<string, vector<int> > um_v; // unordered_map_vector_key
+unordered_map<string, queue<int> > um_q;  // unordered_map_queue_key
+unordered_map<string, priority_queue<int> > um_pq;
+
+int main()
+{
+	um_v["nohjaemoon"].push_back(11);
+	um_v["nohjaemoon"].push_back(9);
+	um_v["nohjaemoon"].push_back(4);
+	um_v["nohjaemoon"].push_back(8);
+	um_v["nohjaemoon"].push_back(10);
+	
+	um_q["developer"].push(5);
+	um_q["developer"].push(2);
+	um_q["developer"].push(3);
+	um_q["developer"].push(4);
+	um_q["developer"].push(1);
+	
+	
+	um_pq["njm"].push(1);
+	um_pq["njm"].push(3);
+	
+	um_pq["njm"].push(5);
+	um_pq["njm"].push(2);
+	
+	um_pq["njm"].push(6);
+	um_pq["njm"].push(8);
+	
+	for(auto &c : um_v)
+	{
+		sort(c.second.begin(),c.second.end());
+	}
+	
+	for(int i = 0; i < um_v["nohjaemoon"].size(); i++)
+	{
+		cout << um_v["nohjaemoon"][i] << endl;
+	}
+	
+	while(!um_q["developer"].empty())
+	{
+		int v = um_q["developer"].front();
+		um_q["developer"].pop();
+		
+		cout << v << endl;
+	} 
+	
+	if(um_q["developer"].size() == 0)
+		cout << "empty!" << endl;
+	
+	while(!um_pq["njm"].empty())
+	{
+		int z = um_pq["njm"].top();
+		um_pq["njm"].pop();
+		
+		cout << z << endl;
+	}
+	
+	return 0;
+}
+
+
+```
