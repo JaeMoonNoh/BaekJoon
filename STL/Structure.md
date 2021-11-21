@@ -58,3 +58,77 @@ sort(n.score1.begin(),n.score1.end());
 
 ```
 
+### 전체 코드
+
+
+```c++
+
+#include<iostream>
+#include<vector>
+#include<queue>
+#include<string>
+#include<algorithm>
+
+using namespace std;
+
+priority_queue<int> pq;
+
+typedef struct{	
+	string name;
+	vector<int> score1;
+	priority_queue<int> score2;
+}Choi;
+
+typedef struct{
+	string name;
+	vector<int> score1;
+	priority_queue<int> score2;
+}Noh;
+
+int main()
+{
+	Noh n;
+	
+	n.name = "NohJaeMoon";
+	
+	for(int i = 0; i < 5; i++)
+	{
+		int num;
+		cin >> num;
+		
+		n.score1.push_back(num);
+		n.score2.push(num);
+	}
+	
+	cout << n.name << endl;
+	
+	for(int i = 0; i < n.score1.size(); i++)
+	{
+		cout << n.score1[i] << " ";
+	} 
+	cout << endl;
+	
+	while(!n.score2.empty())
+	{
+		int z = n.score2.top();
+		n.score2.pop();
+		
+		cout << z << " ";
+	}
+	
+	cout << endl;
+	
+	sort(n.score1.begin(),n.score1.end());
+	
+	for(int i = 0; i < n.score1.size(); i++)
+	{
+		cout << n.score1[i] << " ";
+	}
+	cout << endl;
+	
+	return 0;
+}
+
+
+
+```
