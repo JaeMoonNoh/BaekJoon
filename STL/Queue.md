@@ -59,3 +59,69 @@ queue<pair<int,int> > q;
 q.push(); // q에 삽입
 q.pop(); // q값 빼기
 ```
+
+### 전체 코드
+
+
+```c++
+
+/*
+queue -> 1. queue 2. deque 3. priority_queue
+
+*/
+
+#include<iostream>
+#include<queue> // include
+#include<map>
+
+using namespace std;
+
+struct compare{
+	bool operator()(pair<int,int> a, pair<int,int> b)
+	{
+		if(a.first == b.first)
+			return a.second > b.second;
+			
+		return a.first > b.first;
+	}
+};
+
+queue<pair<int,int> > q;
+deque<int> dq; // 앞뒤로 넣을수 있다는것 
+priority_queue<pair<int,int>, vector<pair<int,int> >,  compare> pq;
+priority_queue<int, vector<int>, greater<int> > d; // ASC 
+priority_queue<int, vector<int>, less<int> > d1; // DESC
+
+int main()
+{
+	q.push({1,1});
+	q.push({2,2});
+	q.push({3,3});
+	
+	pq.push({10,5});
+	pq.push({3,2});
+	pq.push({5,3});
+	
+	while(!q.empty())
+	{
+		int n = q.front().first;
+		int m = q.front().first;
+		q.pop();
+		
+		cout << n << " " << m << endl;
+	}
+	
+	while(!pq.empty())
+	{
+		int n = pq.top().first;
+		int m = pq.top().second;
+		pq.pop();
+		
+		cout << n << " " << m << endl;
+	}
+	
+	return 0;
+}
+
+
+```
