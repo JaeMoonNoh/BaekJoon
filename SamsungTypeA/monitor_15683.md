@@ -463,7 +463,46 @@ int main()
 ```c++
 const int dx[4] = {0,0,1,-1};
 const int dy[4] = {1,-1,0,0}; // down, up, right, left
- 
+
+```
+
+### 잡기술 2
+
+90도 회전한다고 쓰여져 있을때 대체 어떻게 90도를 돌릴수 있을까. 모든 값을 저장해야 할까 생각을했다.
+물론 모든 값을 적어도 될것이다 왜냐면 카메라는 단 5대이고 n의 값도 작기 때문이다.
+하지만 이렇게 푼다면 그냥 손가락으로 세는 것이 낫지 않을까. 다만 카메라도 최대 8개 이기 때문에 수많은 경우의 수를 세기에는 부담이 있다. 
+
+각설하고 90도를 돌리면서 방문하는 방법은 3차원 배열을 이용해 해당 방향을 저장하고(right,up,down,left)
+해당 방향으로 이동이 가능하다면 이동하면 된다. 
+
+그리고 %4를 이용해 4방향을 체크해준다.
+
+```c++
+
+for(int j = 0; j < 4; j++) // 4방향중 right,left,up,down
+{
+	if(visited[y][x][j]) // 바라보는 방향으로 설정된 곳
+	{
+		int ny = y + dy[(angle[i] + j) % 4];
+		int nx = x + dx[(angle[i] + j) % 4]; // angle 90도씩 돌렸는지 angle(1~4) 
+		// 0(right) + 1 % 4 = 1 (up) .. 이런 방식		
+		while(1)
+		{
+			if(copyRoom[ny][nx] == 6)
+				break;
+			if(!(0 <= ny && ny < n && 0 <= nx && nx < m))
+				break;
+						
+			if(copyRoom[ny][nx] == 0)
+				copyRoom[ny][nx] = -1;
+							
+			ny += dy[(angle[i] + j) % 4];
+			nx += dx[(angle[i] + j) % 4]; // dy,dx 이동 
+		}
+	}
+}
+
+
 ```
 
 
